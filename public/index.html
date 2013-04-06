@@ -22,7 +22,7 @@
                 $.each(data.results, function (i, results) {
                   $("<li class='span4'><div class='thumbnail'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
                   $("#profile" + i).attr("src", results.profile_image_url);
-                  $("<div class='caption'><h3 id='name" + i +  "'></h3><p id='captiontext" + i + "'>").appendTo("#profile" + i);
+                  $("<div class='caption'><h3 id='name" + i +  "'></h3><p id='captiontext" + i + "'>").append("#profile" + i);
                   $("name" + i).html(results.from_user_name);
                   $("captiontext" + i).html(results.text);
                 });
