@@ -18,23 +18,17 @@
                 <div class="span3">
                     <ul class="nav nav-list">
                         <li class="nav-header">Technologies</li>
-                        <li id="ruby" class="active"><a href="#">Ruby</a>
-
+                        <li id="recent" class="active"><a href="#">Most Recent</a>
+                        </li>
+                        <li id="ruby"><a href="#">Ruby</a>
                         </li>
                         <li id="ember"><a href="#">Ember</a>
-
                         </li>
                         <li id="python"><a href="#">Python</a>
-
                         </li>
                         <li id="javascript"><a href="#">JavaScript</a>
-
                         </li>
                         <li id="oss"><a href="#">Open Source</a>
-
-                        </li>
-                        <li id="recent"><a href="#">Most Recent</a>
-
                         </li>
                         <li class="divider"></li>
                         <li><a href="#">About</a>
@@ -51,7 +45,7 @@
         <script type="text/javascript">
             function getTweets(q) {
                 $.ajax({
-                    url: "http://search.twitter.com/search.json?callback=?&q=" + q + "&rpp=50",
+                    url: "http://search.twitter.com/search.json?callback=?&q=" + q + "&rpp=150",
                     dataType: "jsonp",
                     success: function (data) {
                         $.each(data.results, function (i, results) {
@@ -60,6 +54,8 @@
                             $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
                             $("#name" + i).text(results.from_user_name);
                             $("#captiontext" + i).text(results.text);
+                            $("#captiontext").after("<a id='link+" i "'+<button type='button' class='btn btn-primary'>Pair With Me</button>")
+                            $("#link" + i).attr('href', 'https://twitter.com/'+ results.from_user +'status/' + results.id_str)
                         });
                     },
                     error: function (data, textStatus, error) {
@@ -67,7 +63,7 @@
                     }
                 });
             }
-            getTweets("pairwithme+ruby")
+            getTweets("pairwithme")
              $("#ruby").click(function () {
                 $("#thumbs").empty();
                 $("*").removeClass("active")
@@ -99,7 +95,7 @@
                 $(this).addClass("active")
                 getTweets("pairwithme+open source")
             })
-             $("#").click(function () {
+             $("#recent").click(function () {
                 $("#thumbs").empty();
                 $("*").removeClass("active")
                 $(this).addClass("active")
