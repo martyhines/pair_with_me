@@ -113,7 +113,7 @@
                 getTweets("pairwithme+objective")
             })
              $("#search").keyup(function(){
-                if $(this).val() > 2){
+                if ($(this).val().length > 2){
                   getTweets("pairwithme" + $(this).val())
                 }
              })
