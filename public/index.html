@@ -1,29 +1,46 @@
 <!doctype html>
 <html>
+    
     <head>
         <title>Pair With Me</title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     </head>
+    
     <body>
         <div class="container">
             <div class="navbar">
                 <div class="navbar-inner"> <a class="brand" href="#">Pair With Me</a>
+
                     <ul class="nav"></ul>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
-                  <ul class="nav nav-list">
-                <li class="nav-header">Technologies</li>
-                <li id="ruby" class="active"><a href="#">Ruby</a></li>
-                <li id="ember"><a href="#">Ember</a></li>
-                <li id="python"><a href="#">Python</a></li>
-                <li id="javascript"><a href="#">JavaScript</a></li>
-                <li id="oss"><a href="#">Open Source</a></li>
-                <li id="recent"><a href="#">Most Recent</a></li>
-                <li class="divider"></li>
-                <li><a href="#">About</a></li>
-              </ul>
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Technologies</li>
+                        <li id="ruby" class="active"><a href="#">Ruby</a>
+
+                        </li>
+                        <li id="ember"><a href="#">Ember</a>
+
+                        </li>
+                        <li id="python"><a href="#">Python</a>
+
+                        </li>
+                        <li id="javascript"><a href="#">JavaScript</a>
+
+                        </li>
+                        <li id="oss"><a href="#">Open Source</a>
+
+                        </li>
+                        <li id="recent"><a href="#">Most Recent</a>
+
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#">About</a>
+
+                        </li>
+                    </ul>
                 </div>
                 <div class="span9">
                     <ul id="thumbs" class="thumbnails"></ul>
@@ -34,7 +51,7 @@
         <script type="text/javascript">
             function getTweets(q) {
                 $.ajax({
-                    url: "http://search.twitter.com/search.json?callback=?&q=" + q,
+                    url: "http://search.twitter.com/search.json?callback=?&q=" + q + "&rpp=50",
                     dataType: "jsonp",
                     success: function (data) {
                         $.each(data.results, function (i, results) {
@@ -50,7 +67,33 @@
                     }
                 });
             }
-            getTweets('pairwithme')
+            getTweets('ruby')
+             $("#ruby").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme+ruby")
+                getTweets("pairwithme+rails")
+            })
+             $("#ember").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme+ember")
+            })
+             $("#python").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme+python")
+            })
+             $("#javascript").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme+javascript");
+                getTweets("pairwithme+js")
+            })
+             $("#oss").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme+open source")
+            })
+             $("#").click(function () {
+                $("#thumbs").empty();
+                getTweets("pairwithme")
+            })
         </script>
     </body>
     <html>
