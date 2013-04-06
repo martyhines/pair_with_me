@@ -5,7 +5,7 @@
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     </head>
     <body>
-        <ul id="thumbs" class="thumbnails" style="height:186px"></ul>
+        <ul id="thumbs" class="thumbnails"></ul>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
             function getTweets(q) {
@@ -14,7 +14,7 @@
                     dataType: "jsonp",
                     success: function (data) {
                         $.each(data.results, function (i, results) {
-                            $("<li class='span4'><div class='thumbnail'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
+                            $("<li class='span4'><div class='thumbnail' style='height:186px'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
                             $("#profile" + i).attr("src", results.profile_image_url);
                             $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
                             $("#name" + i).text(results.from_user_name);
