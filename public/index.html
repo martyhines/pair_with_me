@@ -20,8 +20,8 @@
             success: function (data) {
               console.log(data)
                 $.each(data.results, function (i, results) {
-                  $("<li class='span4'><div class='thumbnail'><img id='profile' src=''>").appendTo("#thumbs");
-                  $("#profile").attr("src", results.profile_image_url)
+                  $("<li class='span4'><div class='thumbnail'><img id='profile'" + i + " src=''>").appendTo("#thumbs");
+                  $("#profile" + i).attr("src", results.profile_image_url)
                 });
               },
             error: function (data, textStatus, error) {
