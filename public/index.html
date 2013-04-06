@@ -20,7 +20,7 @@
             success: function (data) {
               console.log(data)
                 $.each(data.results, function (i, results) {
-                  $("<li class='span4'><div class='thumbnail'><img id='profile'" + i + " src=''>").appendTo("#thumbs");
+                  $("<li class='span4'><div class='thumbnail'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
                   $("#profile" + i).attr("src", results.profile_image_url)
                 });
               },
