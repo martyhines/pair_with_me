@@ -51,12 +51,12 @@
                     dataType: "jsonp",
                     success: function (data) {
                         $.each(data.results, function (i, results) {
-                            $("<li class='span4'><div class='thumbnail' style='height:186px'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
+                            $("<li class='span4'><div class='thumbnail' style='height:222px'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
                             $("#profile" + i).attr("src", results.profile_image_url);
                             $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
                             $("#name" + i).text(results.from_user_name);
                             $("#captiontext" + i).text(results.text);
-                            $("#captiontext" + i).after("<a id='link+" + i + "'+<button type='button' class='btn btn-primary'>Pair With Me</button>")
+                            $("#captiontext" + i).after("<a id='link+" + i + "'<button type='button' class='btn btn-primary'>Pair With Me</button>")
                             $("#link" + i).attr('href', 'https://twitter.com/'+ results.from_user +'status/' + results.id_str)
                         });
                     },
