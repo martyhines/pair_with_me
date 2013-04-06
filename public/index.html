@@ -20,10 +20,10 @@
                   $("<li class='span4'><div class='thumbnail'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
                   $("#profile" + i).attr("src", results.profile_image_url);
                   $("#profile" + i).after("<div class='caption'><h3 id='name" + i +  "'></h3><p id='captiontext" + i + "'>");
-                  $("name" + i).text(results.from_user_name);
+                  $("#name" + i).text(results.from_user_name);
                   console.log(results.from_user_name);
-                  console.log($("name" + i))
-                  $("captiontext" + i).text(results.text);
+                  console.log("name" + i)
+                  $("#captiontext" + i).text(results.text);
                 });
               },
             error: function (data, textStatus, error) {
