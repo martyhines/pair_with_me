@@ -18,7 +18,7 @@
             url: "http://search.twitter.com/search.json?callback=?&q="+q,
             dataType:"jsonp",
             success: function (data) {
-              console.log()
+              console.log(data)
                 $.each(data.results, function (i, results) {
                   $("<li class='span4'><div class='thumbnail'><img id='profile' src=''>").appendTo("#thumbs");
                   $("#profile").attr("src", results.profile_image_url)
