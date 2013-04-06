@@ -18,22 +18,22 @@
                 <div class="span3">
                     <ul class="nav nav-list">
                         <li class="nav-header">Technologies</li>
-                        <li id="recent" class="active"><a href="#">All</a>
+                        <li id="recent" class="active"><a>All</a>
                         </li>
-                        <li id="ruby"><a href="#">Ruby</a>
+                        <li id="ruby"><a>Ruby</a>
                         </li>
-                        <li id="ember"><a href="#">Ember</a>
+                        <li id="ember"><a>Ember</a>
                         </li>
-                        <li id="python"><a href="#">Python</a>
+                        <li id="python"><a>Python</a>
                         </li>
-                        <li id="javascript"><a href="#">JavaScript</a>
+                        <li id="javascript"><a>JavaScript</a>
                         </li>
-                        <li id="objective"><a href="#">Objective-C</a>
+                        <li id="objective"><a>Objective-C</a>
                         </li>
-                        <li id="oss"><a href="#">Open Source</a>
+                        <li id="oss"><a>Open Source</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#">About</a>
+                        <li><a>About</a>
 
                         </li>
                     </ul>
@@ -57,7 +57,7 @@
                             $("#name" + i).text(results.from_user_name);
                             $("#captiontext" + i).text(results.text);
                             $("#captiontext" + i).after("<a id='link+" + i + "'<button type='button' class='btn btn-primary'>Pair With Me</button>")
-                            $("#link" + i).attr('href', 'https://twitter.com/'+ results.from_user +'status/' + results.id_str)
+                            $("#link" + i).attr('href', 'https://twitter.com/'+ results.from_user +'/status/' + results.id_str)
                         });
                     },
                     error: function (data, textStatus, error) {
