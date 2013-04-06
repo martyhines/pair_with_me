@@ -33,8 +33,10 @@
                         <li id="oss"><a>Open Source</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a>About</a>
-
+                        <li>
+                          <form class="form-search">
+                            <input id="search" type="text" placeholder="search" class="input-medium search-query">
+                          </form>
                         </li>
                     </ul>
                 </div>
@@ -43,6 +45,7 @@
                 </div>
             </div>
         </div>
+        <footer class="footer">Marty Hines &copy;2013</footer>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
             function getTweets(q) {
@@ -109,6 +112,11 @@
                 $(this).addClass("active")
                 getTweets("pairwithme+objective")
             })
+             $("#search").keyup(function(){
+                if $(this).val() > 2){
+                  getTweets("pairwithme" + $(this).val())
+                }
+             })
         </script>
     </body>
     <html>
