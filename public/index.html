@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>make history</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="tweet"></div>
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+      <script type="text/javascript">
+        function getTweets(q){
+           $.ajax({
+            url: "http://search.twitter.com/search.json?callback=?&q="+q,
+            dataType:"jsonp",
+            success: function (data) {
+                $.each(data.results, function (i, results) {
+                  $("<p>").html(results.text).appendTo("#tweet");
+                });
+              },
+            error: function (data, textStatus, error) {
+              console.log(textStatus)
+            }
+          });
+        }
+        getTweets('pairwithme')
+      </script>
+  </body>
