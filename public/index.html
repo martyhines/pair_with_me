@@ -73,7 +73,7 @@
                 $("#thumbs").empty();
                 $("*").removeClass("active")
                 $(this).addClass("active")
-                getTweets("pairwithme+" + $(this).atrr("id") )
+                getTweets("pairwithme+" + $(this).attr("id") )
             })
              $("#search").keyup(function(){
                 if ($(this).val().length > 2){
