@@ -11,33 +11,33 @@
             <div class="navbar">
                 <div class="navbar-inner"> <a class="brand" href="#">Pair With Me</a>
 
-                    <ul class="nav"></ul>
+                    <ul class="nav" style="float:right">
+                  <li class="divider-vertical">Follow Me On <a target="_blank" href="http://twitter.com/martyhines/">@martyhines</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
                     <ul class="nav nav-list">
                         <li class="nav-header">Technologies</li>
-                        <li id="recent" class="active"><a>All</a>
+                        <li class="clickable" id="" class="active"><a>All</a>
                         </li>
-                        <li id="ruby"><a>Ruby</a>
+                        <li class="clickable" id="ruby"><a>Ruby</a>
                         </li>
-                        <li id="ember"><a>Ember</a>
+                        <li class="clickable" id="ember"><a>Ember</a>
                         </li>
-                        <li id="python"><a>Python</a>
+                        <li class="clickable" id="python"><a>Python</a>
                         </li>
-                        <li id="javascript"><a>JavaScript</a>
+                        <li class="clickable" id="javascript"><a>JavaScript</a>
                         </li>
-                        <li id="objective"><a>Objective-C</a>
+                        <li class="clickable" id="objective"><a>Objective-C</a>
                         </li>
-                        <li id="oss"><a>Open Source</a>
+                        <li class="clickable" id="open%20source"><a>Open Source</a>
                         </li>
                         <li class="nav-header">Search</li>
                         <li class="divider"></li>
                         <li>
-                          <form class="form-search">
-                            <input id="search-off" type="text" placeholder="search not working yet" class="input-medium search-query">
-                          </form>
+                            <input id="search" type="text" placeholder="search not working yet" class="input-medium search-query">
                         </li>
                     </ul>
                 </div>
@@ -69,48 +69,11 @@
                 });
             }
             getTweets("pairwithme")
-             $("#ruby").click(function () {
+             $(".clickable").click(function () {
                 $("#thumbs").empty();
                 $("*").removeClass("active")
                 $(this).addClass("active")
-                getTweets("pairwithme+ruby")
-            })
-             $("#ember").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+ember")
-            })
-             $("#python").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+python")
-            })
-             $("#javascript").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+javascript");
-                getTweets("pairwithme+js")
-            })
-             $("#oss").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+open source")
-            })
-             $("#recent").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme")
-            })
-             $("#objective").click(function () {
-                $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+objective")
+                getTweets("pairwithme+" + $(this).html )
             })
              $("#search").keyup(function(){
                 if ($(this).val().length > 2){
@@ -118,5 +81,5 @@
                 }
              })
         </script>
-    </body>
-    <html>
+</body>
+<html>
