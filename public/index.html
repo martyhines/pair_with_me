@@ -12,7 +12,9 @@
                 <div class="navbar-inner"> <a class="brand" href="#">Pair With Me</a>
 
                     <ul class="nav" style="float:right">
-                      <li class="divider-vertical"><a target="_blank" href="http://twitter.com/martyhines/">Made By @martyhines</a></li>
+                        <li class="divider-vertical"><a target="_blank" href="http://twitter.com/martyhines/">Made By @martyhines</a>
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -21,23 +23,30 @@
                     <ul class="nav nav-list">
                         <li class="nav-header">Technologies</li>
                         <li class="clickable" id="" class="active"><a>All</a>
+
                         </li>
                         <li class="clickable" id="ruby"><a>Ruby</a>
+
                         </li>
                         <li class="clickable" id="ember"><a>Ember</a>
+
                         </li>
                         <li class="clickable" id="python"><a>Python</a>
+
                         </li>
                         <li class="clickable" id="javascript"><a>JavaScript</a>
+
                         </li>
                         <li class="clickable" id="objective"><a>Objective-C</a>
+
                         </li>
                         <li class="clickable" id="open%20source"><a>Open Source</a>
+
                         </li>
                         <li class="nav-header">Search</li>
                         <li class="divider"></li>
                         <li>
-                            <input id="search" type="text" placeholder="search not working yet" class="input-medium search-query">
+                            <input id="search" type="text" placeholder="search" class="input-medium search-query">
                         </li>
                     </ul>
                 </div>
@@ -48,38 +57,53 @@
         </div>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script type="text/javascript">
-            function getTweets(q) {
+            var buildThumbNail = function (i, results) {
+                $("<li class='span4'><div class='thumbnail' style='height:245px'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
+                $("#profile" + i).attr("src", results.profile_image_url);
+                $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
+                $("#name" + i).text(results.from_user_name);
+                $("#captiontext" + i).text(results.text);
+                $("#captiontext" + i).after("<a id='link" + i + "'<button type='button' class='btn btn-primary'>Pair With Me</button>");
+                $("#link" + i).attr('href', 'https://twitter.com/' + results.from_user + '/status/' + results.id_str);
+            }
+
+            var noResults = function () {
+                $("<div class='alert alert-block'><h4>Sorry!</h4>No search results. Please try another search or select a technology from the list.</div>").appendTo("#thumbs")
+            }
+
+            var getTweets = function (q) {
                 $.ajax({
                     url: "http://search.twitter.com/search.json?callback=?&q=" + q + "&rpp=150",
                     dataType: "jsonp",
                     success: function (data) {
-                        $.each(data.results, function (i, results) {
-                            $("<li class='span4'><div class='thumbnail' style='height:245px'><img id='profile" + i + "' src=''>").appendTo("#thumbs");
-                            $("#profile" + i).attr("src", results.profile_image_url);
-                            $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
-                            $("#name" + i).text(results.from_user_name);
-                            $("#captiontext" + i).text(results.text);
-                            $("#captiontext" + i).after("<a id='link" + i + "'<button type='button' class='btn btn-primary'>Pair With Me</button>")
-                            $("#link" + i).attr('href', 'https://twitter.com/'+ results.from_user +'/status/' + results.id_str)
-                        });
+                        if (data.results.length) {
+                            $.each(data.results, function (i, results) {
+                                buildThumbNail(i, results);
+                            });
+                        } else {
+                            noResults();
+                        }
                     },
                     error: function (data, textStatus, error) {
-                        console.log(data, textStatus, error)
+                        console.log(data, textStatus, error);
                     }
                 });
             }
             getTweets("pairwithme")
              $(".clickable").click(function () {
                 $("#thumbs").empty();
-                $("*").removeClass("active")
-                $(this).addClass("active")
-                getTweets("pairwithme+" + $(this).attr("id") )
+                $("*").removeClass("active");
+                $this = $(this);
+                $this.addClass("active");
+                getTweets("pairwithme+" + $this.attr("id"));
             })
-             $("#search").keyup(function(){
-                if ($(this).val().length > 2){
-                  getTweets("pairwithme" + $(this).val())
+             $("#search").keyup(function () {
+                $this = $(this);
+                if ($this.val().length > 3) {
+                    $("#thumbs").empty();
+                    getTweets("pairwithme+" + $this.val());
                 }
-             })
+            })
         </script>
-</body>
+    </body>
 <html>
