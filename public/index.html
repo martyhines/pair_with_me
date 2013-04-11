@@ -92,7 +92,7 @@
             getTweets("pairwithme")
              $(".clickable").click(function () {
                 $("#thumbs").empty();
-                $("*").removeClass("active");
+                $("li").removeClass("active");
                 $this = $(this);
                 $this.addClass("active");
                 getTweets("pairwithme+" + $this.attr("id"));
