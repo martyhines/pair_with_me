@@ -1,14 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
   <title>Pairwithme</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 <body>
+  <div class="container">
+      <div class="navbar">
+          <div class="navbar-inner"> <a class="brand" href="#">Pair With Me</a>
 
-<%= yield %>
+              <ul class="nav" style="float:right">
+                  <li class="divider-vertical"><a target="_blank" href="http://twitter.com/martyhines/">Made By @martyhines</a>
 
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="row">
+          <div class="span3">
+              <ul class="nav nav-list">
+                  <li class="nav-header">Technologies</li>
+                  <li class="<%= 'active' if @search == 'all' %>"><%= link_to 'All' ,'/'%>
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'Ruby' %>" id="ruby"><%= link_to 'Ruby' ,'/ruby'%>
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'Ember' %>" id="ember"><%= link_to 'Ember' ,'/ember'%>
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'JavaScript' %>" id="javascript"><%= link_to 'JavaScript' ,'/javascript'%>
+
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'Python' %>" id="python"><%= link_to 'Python' ,'/python'%>
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'Objective-C' %>" id="objective"><%= link_to 'Objective-C' ,'/objectivec'%>
+
+                  </li>
+                  <li class="<%= 'active' if @search == 'Open Source' %>" id="open%20source"><%= link_to 'Open Source' ,'/opensource'%>
+
+                  </li>
+                  <li class="nav-header">Search</li>
+                  <li class="divider"></li>
+                  <li>
+                  <%= form_tag('/search') do -%>
+                    <div><%= search_field_tag 'search', nil,:class =>"input-medium search-query", :placeholder => "search" %></div>
+                  <% end -%>
+                  </li>
+              </ul>
+          </div>
+          <div class="span9">
+            <ul id="thumbs" class="thumbnails"> <%= yield %> </ul>
+          </div>
+          </div>
+      </div>
 </body>
 </html>

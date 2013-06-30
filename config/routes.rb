@@ -1,4 +1,13 @@
 Pairwithme::Application.routes.draw do
+
+  get 'tweets/api'
+  match '/ember'      => 'tweets#ember'
+  match '/javascript' => 'tweets#javascript'
+  match '/objectivec' => 'tweets#objectivec'
+  match '/opensource' => 'tweets#opensource'
+  match '/ruby'       => 'tweets#ruby'
+  match '/python'     => 'tweets#python'
+  match '/search'     => 'tweets#search'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +57,7 @@ Pairwithme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'tweets#index'
 
   # See how all your routes lay out with "rake routes"
 
