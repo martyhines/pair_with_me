@@ -62,7 +62,7 @@
                 $("#profile" + i).attr("src", results.profile_image_url);
                 $("#profile" + i).after("<div class='caption'><h3 id='name" + i + "'></h3><p id='captiontext" + i + "'>");
                 $("#name" + i).text(results.from_user_name);
-                $("#captiontext" + i).text(results.text);
+                $("#captiontext" + i).text(results.caption.text);
                 $("#captiontext" + i).after("<a id='link" + i + "'<button type='button' class='btn btn-primary'>Pair With Me</button>");
                 $("#link" + i).attr('href', 'https://twitter.com/' + results.from_user + '/status/' + results.id_str);
             }
@@ -77,7 +77,7 @@
                     dataType: "jsonp",
                     success: function (data) {
                         if (data.results.length) {
-                            $.each(data.results, function (i, results) {
+                            $.each(data.data, function (i, results) {
                                 buildThumbNail(i, results);
                             });
                         } else {
