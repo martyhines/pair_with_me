@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
+  before_filter :regex
   require "rubygems"
   require "twitter"
-
   Twitter.configure do |config|
     config.consumer_key = 'SIA2IocBpvIjoe4AQ1wg'
     config.consumer_secret =  'UcablPTEeywWAxzKg5MP1VUFFoPppPaR1HBVQXCJ8g'
@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
 
   def index
     client = Twitter::Client.new
-    @tweets = client.search(params[:q] || 'pairwithme', :count => 100).statuses
+    @tweets = client.search('pairwithme', :count => 100).statuses
     @search = "all"
   end
   def api
@@ -55,4 +55,9 @@ class TweetsController < ApplicationController
     @tweets = client.search('pairwithme+'+ params[:search], :count => 100).statuses
     @search = params[:search]
   end
+
+  def regex
+    @regex = Regexp.new(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)
+  end
 end
+

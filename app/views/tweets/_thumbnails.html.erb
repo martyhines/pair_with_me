@@ -1,4 +1,3 @@
-<!-- /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/ -->
 <% unless @tweets.empty? %>
 <% @tweets.each do |tweet| %>
   <li class='span4'>
@@ -12,7 +11,7 @@
         </a>
       </span></h4>
       <p style="height:81px">
-        <%= tweet[:text].gsub(/(((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?))/) {"<a href=" + $1+ "> " + $1+ " </a>"}.html_safe  %>
+        <%= tweet[:text].gsub(@regex) {"<a href=" + $1+ "> " + $1+ " </a>"}.html_safe  %>
       </p>
       <a target="_blank" href="http://twitter.com/<%= tweet[:user][:screen_name] %>/status/<%= tweet[:id] %>">
         <button type='button' class='btn btn-primary pull-right'>Pair With Me</button>
