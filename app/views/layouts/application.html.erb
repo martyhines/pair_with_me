@@ -32,7 +32,7 @@
                   <li class="nav-header">Search</li>
                   <li class="divider"></li>
                   <li>
-                  <%= form_tag('/search') do -%>
+                  <%= form_tag('/search', id: 'search') do -%>
                     <div><%= search_field_tag 'search', nil, :class =>"input-medium search-query", :placeholder => "search" ,"x-webkit-speech" => "true" %></div>
                   <% end -%>
                   </li>
