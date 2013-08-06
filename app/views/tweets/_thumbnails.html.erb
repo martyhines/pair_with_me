@@ -11,7 +11,7 @@
         </a>
       </span></h4>
       <p style="height:81px">
-        <%= tweet[:text].gsub(@regex) {"<a href=" + $1+ "> " + $1+ " </a>"}.html_safe  %>
+        <%= auto_link(tweet[:text]) %>
       </p>
       <a target="_blank" href="http://twitter.com/<%= tweet[:user][:screen_name] %>/status/<%= tweet[:id] %>">
         <button type='button' class='btn btn-primary pull-right'>Pair With Me</button>
