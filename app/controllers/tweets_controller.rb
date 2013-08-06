@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-  before_filter :set_technologies 
+  before_filter :set_technologies
   require "rubygems"
   require "twitter"
 
@@ -14,10 +14,6 @@ class TweetsController < ApplicationController
   end
 
   private
-  def username_link
-    # to find twitter handle
-    #Regexp.new(/@\w+/)
-  end
 
   def set_technologies
     @technologies = {
