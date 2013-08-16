@@ -6,11 +6,9 @@ gem 'twitter'
 
 gem 'rails_autolink'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 group :development do
   gem 'sqlite3', '1.3.7'
+  gem 'rspec-rails', '2.11.0'
 end
 
 # Gems used only for assets and not required
@@ -26,6 +24,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :test do
+  gem 'capybara', '1.1.2'
+end
 
 group :production do
   gem 'pg', '0.12.2'
